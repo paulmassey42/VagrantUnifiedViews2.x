@@ -1,0 +1,67 @@
+#+TITLE: Vagrant ReadMe
+
+* Introduction
+
+Vagrant is a tool for automating the building and provisioning of
+virtual systems. The main interesting points being:
+
+- It is command-line based,
+- The configuration details for the whole machine is a normal text
+  file (Vagrantfile),
+- The system can destroyed and recreated simply from the configuration
+  file (saving disc space),
+- The configuration file can be stored in a source code repository,
+- The fact that the system configuration need to be placed in the
+  Vagrantfile configuration file means that configuration changes
+  are documented and should be recreatable.
+
+The main access point for *vagrant* can be found at [[https://www.vagrantup.com][Main Link]], which 
+provides the installation details for the main vagrant package.
+
+* Basic Commands
+
+There isn't much required to get a basic virtualbox system up and
+running:
+
+- *mkdir vagrant_test*
+- *cd vagrant_test*
+- *vagrant init "machine"*
+  - edit the /Vagrantfile/
+- *vagrant up*
+
+The /Vagrantfile/ contains the details of the system which is required.
+
+* Example Vagrant Machine
+
+On the command line:
+
+- *git clone https://github.com/paulmassey42/VagrantUnifiedViews1.5.5.git*
+- *cd VagrantUnifiedViews1.5.5*
+- *vagrant plugin install vagrant-vbguest*
+- *vagrant up*
+  Possibly select you network interface connection point
+  This will take a *long* time the first time
+
+Then to make sure the GUI interface is usable from the virtual machine
+
+- *vagrant halt*
+- *vagrant up*
+
+Then it should be possible to use the virtual machine
+ 
+- Login password: /vagrant/
+
+- Select the iceweasel web-browser
+- access http://localhost:8080/unifiedviews
+
+  Login account  : /admin/
+  Login password : /test/
+
+- Unifiedviews functions should then be accessible.
+
+* Notes:
+- Depending on the underlying system, it seems that the network
+  connections settings sometimes cause problems (*halt*, wait a while
+  and *up* again, normally clears the problem).
+- some freezes have been observed.
+
