@@ -2,21 +2,7 @@
 
 * Introduction
 
-Vagrant is a tool for automating the building and provisioning of
-virtual systems. The main interesting points being:
-
-- It is command-line based,
-- The configuration details for the whole machine is a normal text
-  file (Vagrantfile),
-- The system can destroyed and recreated simply from the configuration
-  file (saving disc space),
-- The configuration file can be stored in a source code repository,
-- The fact that the system configuration need to be placed in the
-  Vagrantfile configuration file means that configuration changes
-  are documented and should be recreatable.
-
-The main access point for *vagrant* can be found at [[https://www.vagrantup.com][Main Link]], which 
-provides the installation details for the main vagrant package.
+Not quite working version ..
 
 * Basic Commands
 
@@ -35,8 +21,8 @@ The /Vagrantfile/ contains the details of the system which is required.
 
 On the command line:
 
-- *git clone https://github.com/paulmassey42/VagrantUnifiedViews1.5.5.git*
-- *cd VagrantUnifiedViews1.5.5*
+- *git clone https://github.com/paulmassey42/VagrantUnifiedViews2.x.git*
+- *cd VagrantUnifiedViews2.x*
 - *vagrant plugin install vagrant-vbguest*
 - *vagrant up*
   Possibly select you network interface connection point
@@ -52,7 +38,8 @@ Then it should be possible to use the virtual machine
 - Login password: /vagrant/
 
 - Select the iceweasel web-browser
-- access http://localhost:8080/unifiedviews
+
+- access http://localhost:8080/unifiedviews  (Not working)
 
   Login account  : /admin/
   Login password : /test/
