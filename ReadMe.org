@@ -29,7 +29,7 @@ Then it should be possible to use the virtual machine
 
 - Select the iceweasel web-browser
 
-- access http://localhost:28080/unifiedviews  (Not working)
+- access http://localhost:28080/unifiedviews
 
   Login account  : /admin/
   Login password : /test/
