@@ -4,20 +4,12 @@
 
 Not quite working version ..
 
-* Basic Commands
+* Before Starting
 
-There isn't much required to get a basic virtualbox system up and
-running:
+Download "ojdbc7.jar" from the Oracle site and place it in this 
+directory.
 
-- *mkdir vagrant_test*
-- *cd vagrant_test*
-- *vagrant init "machine"*
-  - edit the /Vagrantfile/
-- *vagrant up*
-
-The /Vagrantfile/ contains the details of the system which is required.
-
-* Example Vagrant Machine
+* Vagrant Machine for Unified Views 2.0.1
 
 On the command line:
 
@@ -39,7 +31,7 @@ Then it should be possible to use the virtual machine
 
 - Select the iceweasel web-browser
 
-- access http://localhost:8080/unifiedviews  (Not working)
+- access http://localhost:28080/unifiedviews  (Not working)
 
   Login account  : /admin/
   Login password : /test/
