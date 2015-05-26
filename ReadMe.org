@@ -2,8 +2,6 @@
 
 * Introduction
 
-Not quite working version ..
-
 * Before Starting
 
 Download "ojdbc7.jar" from the Oracle site and place it in this 
