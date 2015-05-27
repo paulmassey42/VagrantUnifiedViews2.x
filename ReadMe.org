@@ -2,12 +2,17 @@
 
 * Introduction
 
+This will build the vagrant machine for the 2.0.1 version of 
+the UnifiedViews packages.
+
 * Before Starting
 
-Download "ojdbc7.jar" from the Oracle site and place it in this 
-directory.
+Download "ojdbc7.jar" from the Oracle site [1].It is to be placed in
+the directory with the VagrantFile (once cloned).
 
-* Vagrant Machine for Unified Views 2.0.1
+[1] http://www.oracle.com/technetwork/database/features/jdbc/jdbc-drivers-12c-download-1958347.html
+
+* Building the Vagrant Machine for Unified Views 2.0.1
 
 On the command line:
 
