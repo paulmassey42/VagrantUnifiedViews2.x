@@ -46,4 +46,3 @@ Then it should be possible to use the virtual machine
   connections settings sometimes cause problems (*halt*, wait a while
   and *up* again, normally clears the problem).
 - some freezes have been observed.
-

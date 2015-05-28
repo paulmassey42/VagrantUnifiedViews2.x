@@ -66,22 +66,15 @@ apt-get update -y
 
 ###############################################################
 # Unified views pulling, packaging and hopefully the installation.
-# cd ${HOME}
-# if [ -d Packages ]
-# then
-#   cd Packages ; git pull
-# else
-#    git clone --branch UV_v2.0.4 https://github.com/UnifiedViews/Packages.git
-# fi
-# cd ${HOME}/Packages
-# mvn package
-# cd target
-# cp ${HOME}/Packages/*/target/*.deb .
-# echo "****** packages built - installing"
-# apt-get install -y apt-get install unifiedviews-mysql
-# dpkg -f -i unifiedviews-backend-shared*_all.deb  unifiedviews-webapp-shared*_all.deb unifiedviews-backend-mysql*_all.deb unifiedviews-backend-2*_all.deb unifiedviews-webapp-mysql*all.deb unifiedviews-webapp-2*all.deb unifiedviews-mysql*_all.deb unifiedviews-plugins*.deb
 apt-get -y install unifiedviews-mysql
 apt-get -y install unifiedviews-plugins
+
+# Change the env (language changed to english :-))
+sed -iBAC -e 's/sk/en/g' /etc/unifiedviews/*.properties
+# Make sure that the DPU's are in
+bash /usr/share/unifiedviews/dist/plugins/deploy-dpus.sh
+
+# Make sure nothing missing ...
 apt-get -f -y install 
 
 ###############################################################
@@ -92,7 +85,6 @@ echo "vagrant ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/vagrant
 
 ###############################################################
 # Change the default homepage
-sed -iBAC -e 's/sk/en/g' /etc/unifiedviews/*.properties
 echo "user_pref(\"browser.startup.homepage\", \"http://localhost:28080/unifiedviews\");" >> /etc/iceweasel/pref/iceweasel.js
 echo "_user_pref(\"browser.startup.homepage\", \"http://localhost:28080/unifiedviews\");" >> /etc/iceweasel/profile/prefs.js
 
