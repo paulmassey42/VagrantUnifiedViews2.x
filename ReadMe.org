@@ -41,6 +41,25 @@ Then it should be possible to use the virtual machine
 
 - Unifiedviews functions should then be accessible.
 
+* Development Environment Included
+In the /vagrant environment, the Plugin-DevEnv is also cloned
+from the git repository. The DevEnv has been installed, so 
+the following should work.
+
+#+BEGIN_SRC bash
+cd /vagrant
+mvn archetype:generate
+--> 1351 is the eu.unifiedviews archetype
+--> Fill in other values as required for your-project
+cd your-project
+mvn package
+#+END_SRC
+
+The result of this will be a package which can be imported into
+UnifiedViews.
+
+More details: [[https://docs.google.com/document/d/1QDImj2SO5XOasG-K9EV1wdzgnZXY8jJPBSAG5J84T_Q/edit#][DPU Creation Tutorial]]
+
 * Notes:
 - Depending on the underlying system, it seems that the network
   connections settings sometimes cause problems (*halt*, wait a while

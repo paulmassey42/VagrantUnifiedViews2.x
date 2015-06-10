@@ -5,26 +5,25 @@
 #
 # This is the LATEST, 2.0.1 version (not a specific branch).
 #
-echo "deb http://packages.comsode.eu/debian wheezy main" > /etc/apt/sources.list.d/odn.list
-wget -O - http://packages.comsode.eu/key/odn.gpg.key | apt-key add -
-apt-get update -y --force-yes
-apt-get install -y xinit xterm iceweasel
-apt-get install -y gnome-terminal gnome-shell
+# Standard System Updates.
+apt-get install -y xinit xterm iceweasel gnome-terminal gnome-shell
 apt-get install -y dkms virtualbox-guest-dkms virtualbox-guest-x11
-apt-get install -y gdm3 apache2  libapache2-mod-auth-cas
+apt-get install -y gdm3 apache2 libapache2-mod-auth-cas debconf-utils dpkg-dev build-essential quilt gdebi
 dpkg-reconfigure gdm3
 
 # Now start to setup for building unified views, etc.
 apt-get install -y openjdk-7-jre openjdk-7-jdk
 apt-get install -y tomcat7 git maven bash emacs
-apt-get install -y debconf-utils dpkg-dev build-essential quilt gdebi
 echo "JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64" >> /etc/default/tomcat7
+
+echo "deb http://packages.comsode.eu/debian wheezy main" > /etc/apt/sources.list.d/odn.list
+wget -O - http://packages.comsode.eu/key/odn.gpg.key | apt-key add -
+apt-get update -y --force-yes
 
 ###############################################################
 # http://www.oracle.com/technetwork/database/features/jdbc/default-2280470.html
 # should be in this directory
-mvn install:install-file -Dfile=/vagrant/ojdbc7.jar -DgroupId=com.oracle -DartifactId=ojdbc7 \
-    -Dversion=12.1.0.2.0 -Dpackaging=jar
+mvn install:install-file -Dfile=/vagrant/ojdbc7.jar -DgroupId=com.oracle -DartifactId=ojdbc7 -Dversion=12.1.0.2.0 -Dpackaging=jar
 
 ###############################################################
 # Set the default values for the debconf questions
@@ -62,7 +61,7 @@ echo "unifiedviews-backend-mysql      backend/mysql_db_user string root"| debcon
 # DB installations, etc which have customised values.
 
 apt-get install -y virtuoso-opensource mysql-server iceweasel
-apt-get update -y
+apt-get update -y --force-yes
 
 ###############################################################
 # Unified views pulling, packaging and hopefully the installation.
@@ -87,6 +86,9 @@ echo "vagrant ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/vagrant
 # Change the default homepage
 echo "user_pref(\"browser.startup.homepage\", \"http://localhost:28080/unifiedviews\");" >> /etc/iceweasel/pref/iceweasel.js
 echo "_user_pref(\"browser.startup.homepage\", \"http://localhost:28080/unifiedviews\");" >> /etc/iceweasel/profile/prefs.js
+ 
+( cd /vagrant ; git clone https://github.com/UnifiedViews/Plugin-DevEnv.git )
+( cd /vagrant/Plugin-DevEnv ; mvn install )
 
 ###############################################################
 apt-get autoclean
