@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bashA
 #################################################################
 # Install the necessary components for building and installing
 # the unifiedviews system from the github.
@@ -13,7 +13,7 @@ dpkg-reconfigure gdm3
 
 # Now start to setup for building unified views, etc.
 apt-get install -y openjdk-7-jre openjdk-7-jdk
-apt-get install -y tomcat7 git maven bash emacs
+apt-get install -y tomcat7 git maven bash emacs nano vim
 echo "JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64" >> /etc/default/tomcat7
 
 echo "deb http://packages.comsode.eu/debian wheezy main" > /etc/apt/sources.list.d/odn.list
@@ -89,6 +89,7 @@ echo "_user_pref(\"browser.startup.homepage\", \"http://localhost:28080/unifiedv
  
 ( cd /vagrant ; git clone https://github.com/UnifiedViews/Plugin-DevEnv.git )
 ( cd /vagrant/Plugin-DevEnv ; mvn install )
+( cd /vagrant ; git clone https://github.com/tenforce/unifiedviews-dpus.git )
 
 ###############################################################
 apt-get autoclean
